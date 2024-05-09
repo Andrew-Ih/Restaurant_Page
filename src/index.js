@@ -1,23 +1,61 @@
 import './styles/style.css';
 import image from './img/restaurant-interior.jpg';
+import createHomePage from './home';
+import createMenu from './menu';
+import createAbout from './about';
 
-function createHomePage(){
-    const main = document.createElement('main');
+//Create Nav bar
+const nav = document.querySelector('nav');
+const homeBtn = document.createElement('button');
+const menuBtn = document.createElement('button');
+const aboutBtn = document.createElement('button');
 
-    const img = document.createElement('img');
-    img.src = image;
+homeBtn.classList.add('nav-bar-btns');
+homeBtn.textContent = 'Home';
+menuBtn.classList.add('nav-bar-btns');
+menuBtn.textContent = 'Menu';
+aboutBtn.classList.add('nav-bar-btns');
+aboutBtn.textContent = 'About';
 
-    document.body.appendChild(main);
-    main.appendChild(img);
+nav.appendChild(homeBtn);
+nav.appendChild(menuBtn);
+nav.appendChild(aboutBtn);
 
-    const description = document.createElement('div');
-    description.classList.add('home-page-description');
-    description.textContent = "Welcome to our restaurant!";
+// //Create conent section
+// const content = document.querySelector('#content');
 
-    main.appendChild(description);
+// const img = document.createElement('img');
+// img.src = image;
+
+// document.body.appendChild(content);
+// content.appendChild(img);
 
 
+
+
+homeBtn.addEventListener('click', function() {
+    clearScreen();
+    createHomePage();
+});
+
+menuBtn.addEventListener('click', function() {
+    clearScreen();
+    createMenu();
+});
+
+aboutBtn.addEventListener('click', function() {
+    clearScreen();
+    createAbout();
+});
+
+
+function clearScreen() {
+    const content = document.querySelector('#content'); // Assuming the content is within a main element
+    content.innerHTML = ''; // Remove all content within the main element
 }
 
-createHomePage()
+
+createHomePage();
+
+
 
